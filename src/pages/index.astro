@@ -1,0 +1,25 @@
+---
+import '../styles/global.css';
+
+const title = 'Vale o Notebook?';
+const description = 'Curadoria direta para encontrar notebooks que realmente valem o seu dinheiro.';
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <main>
+      <p class="eyebrow">CURADORIA INDEPENDENTE</p>
+      <h1>{title}</h1>
+      <p class="lead">{description}</p>
+      <p class="status">Projeto Astro inicializado. A landing page será construída na próxima etapa.</p>
+    </main>
+  </body>
+</html>
