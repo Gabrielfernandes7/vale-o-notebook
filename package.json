@@ -1,0 +1,17 @@
+{
+  "name": "vale-o-notebook",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "devDependencies": {
+    "@astrojs/check": "latest",
+    "astro": "latest",
+    "typescript": "latest"
+  }
+}
