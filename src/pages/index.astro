@@ -11,7 +11,9 @@ const products = [
     specs: ['Ryzen 5 5625U', '12 GB de RAM', 'SSD de 512 GB', 'Tela 16″ IPS WUXGA'],
     ideal: 'Trabalho, faculdade, muitas abas e uso diário.',
     attention: 'É maior que um notebook de 15,6″; considere isso se você transporta todo dia.',
-    link: 'https://www.mercadolivre.com.br/notebook-vaio-fe16-amd-ryzen-5-5625u-windows-11-home-12gb-ram-512gb-ssd-tela-16-ips-wuxga-antirreflexo-vjfe69f11x-b1221h-cinza-grafite/p/MLB48919057?pdp_filters=item_id%3AMLB5361315142&matt_tool=38524122&ua=pqEIGA_OGp2j5RHtmbWz4XyzeVpGGAOP2avCm0tBIeWzr5oi#origin=share&sid=share&wid=MLB5361315142&action=copy',
+    price: 'R$ 3.869,10',
+    sold: '+5 mil vendidos',
+    link: 'https://meli.la/2Byh1uN',
   },
   {
     brand: 'Lenovo',
@@ -21,8 +23,10 @@ const products = [
     summary: 'Processador forte para quem quer agilidade e não precisa de placa de vídeo dedicada.',
     specs: ['Core i5-13420H', '8 GB de RAM', 'SSD de 512 GB', 'Windows 11'],
     ideal: 'Planilhas, programação, estudo e produtividade intensa.',
-    attention: 'Os 8 GB atendem ao uso comum, mas confirme a possibilidade de expansão antes da compra.',
-    link: 'https://www.mercadolivre.com.br/notebook-lenovo-ideapad-slim-3-15irh10-intel-core-i5-13420h-8gb-512gb-ssd-windows-11-153-83ns0002br-luna-grey/p/MLB51233304?pdp_filters=item_id%3AMLB5758565582&matt_tool=38524122&ua=Gjr5HvZaZALoUCcqaKflbUD-1RsJsUW9STzhE6PLRzIeSx6N#origin=share&sid=share&wid=MLB5758565582&action=copy',
+    attention: 'A memória de 8 GB é soldada; avalie se essa capacidade será suficiente no longo prazo.',
+    price: 'R$ 3.899,00',
+    sold: '10 mil vendidos',
+    link: 'https://meli.la/2oZsw7o',
   },
   {
     brand: 'Samsung',
@@ -33,7 +37,9 @@ const products = [
     specs: ['Core i5-1335U', '8 GB de RAM', 'SSD de 512 GB', 'Tela 15,6″ Full HD'],
     ideal: 'Faculdade, escritório, reuniões e deslocamentos frequentes.',
     attention: 'Prioriza mobilidade e autonomia; não é uma opção para jogos pesados.',
-    link: 'https://www.mercadolivre.com.br/notebook-samsung-galaxy-book4-intel-core-i5-1335u-13-ghz-ate-46ghz-12-mb-l3-cache-windows-11-home-8gb-512gb-ssd-iris-xe-156-full-hd-led-155kg/p/MLB37044038?offer_type=OFFICIAL_STORE',
+    price: 'R$ 4.334,15',
+    sold: '+10 mil vendidos',
+    link: 'https://meli.la/1E8Rucj',
   },
   {
     brand: 'Acer',
@@ -44,7 +50,9 @@ const products = [
     specs: ['Core i5-13420H', '16 GB DDR5', 'GeForce RTX 4050', 'Tela 15,6″ 165 Hz'],
     ideal: 'Jogos, edição de vídeo, 3D e aplicações aceleradas por GPU.',
     attention: 'É mais pesado, consome mais energia e costuma fazer mais ruído que modelos de produtividade.',
-    link: 'https://www.mercadolivre.com.br/notebook-acer-nitro-v15-anv155251e4-intel-core-i5-13420h-13-geracao-16gb-ddr5-nvidia-geforce-rtx-4050-512ssd-tela-156-165-hz-windows-11-home-teclado-retroiluminado-wi-fi-6/p/MLB60407347?pdp_filters=item_id%3AMLB5840007964&matt_tool=38524122&ua=qNL977J2pTn9ah1FLHfWK5T2P4YXJfJjn-iOwwRWWVEM0PVk#origin=share&sid=share&wid=MLB5840007964&action=copy',
+    price: 'R$ 7.114,50',
+    sold: '+1 mil vendidos',
+    link: 'https://meli.la/2AbWA7q',
   },
 ];
 
@@ -138,6 +146,10 @@ const description = 'Quatro notebooks escolhidos para trabalho, estudo, mobilida
                 <p class="product-brand">{product.brand}</p>
                 <h3>{product.model}</h3>
                 <p class="product-summary">{product.summary}</p>
+                <ul class="spec-list" aria-label="Informações comerciais consultadas">
+                  <li>{product.price}</li>
+                  <li>{product.sold}</li>
+                </ul>
                 <ul class="spec-list">
                   {product.specs.map((spec) => <li>{spec}</li>)}
                 </ul>
@@ -150,7 +162,7 @@ const description = 'Quatro notebooks escolhidos para trabalho, estudo, mobilida
                   Ver oferta no Mercado Livre
                   <span aria-hidden="true">↗</span>
                 </a>
-                <p class="price-note">Preço, estoque e vendedor devem ser confirmados no anúncio.</p>
+                <p class="price-note">Consulta em 16/08/2026. Preço, estoque e vendedor devem ser confirmados no anúncio.</p>
               </div>
             </article>
           ))}
