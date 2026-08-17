@@ -1,0 +1,17 @@
+---
+import IntentPage from '../components/IntentPage.astro';
+import { recommendedProducts } from '../data/products';
+
+const nearestOptions = [...recommendedProducts].sort((a, b) => a.price - b.price).slice(0, 2);
+---
+
+<IntentPage
+  title="Melhor notebook até R$ 3.000 em 2026 | Vale o Notebook?"
+  description="Veja por que ainda não recomendamos os modelos pesquisados até R$ 3.000 e quais são as alternativas mais próximas."
+  eyebrow="ORÇAMENTO ATÉ R$ 3.000"
+  heading="Hoje, nenhum dos modelos pesquisados passa no nosso corte até R$ 3.000."
+  intro="O ASUS próximo dessa faixa apareceu com processador básico, SSD de 128 GB e apenas 50 unidades vendidas. Preferimos não chamar isso de boa compra só para preencher uma lista."
+  note="As opções abaixo ultrapassam o orçamento, mas são as alternativas aprovadas mais próximas. Os preços mudam; confirme cupons e condições no anúncio."
+  products={nearestOptions}
+/>
+

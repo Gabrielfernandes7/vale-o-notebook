@@ -1,60 +1,7 @@
 ---
 import '../styles/global.css';
-
-const products = [
-  {
-    brand: 'VAIO',
-    model: 'FE16',
-    badge: 'Melhor equilíbrio',
-    tone: 'blue',
-    summary: 'Tela grande, memória confortável e Windows pronto para trabalho e estudo.',
-    specs: ['Ryzen 5 5625U', '12 GB de RAM', 'SSD de 512 GB', 'Tela 16″ IPS WUXGA'],
-    ideal: 'Trabalho, faculdade, muitas abas e uso diário.',
-    attention: 'É maior que um notebook de 15,6″; considere isso se você transporta todo dia.',
-    price: 'R$ 3.869,10',
-    sold: '+5 mil vendidos',
-    link: 'https://meli.la/2Byh1uN',
-  },
-  {
-    brand: 'Lenovo',
-    model: 'IdeaPad Slim 3i',
-    badge: 'Mais desempenho',
-    tone: 'violet',
-    summary: 'Processador forte para quem quer agilidade e não precisa de placa de vídeo dedicada.',
-    specs: ['Core i5-13420H', '8 GB de RAM', 'SSD de 512 GB', 'Windows 11'],
-    ideal: 'Planilhas, programação, estudo e produtividade intensa.',
-    attention: 'A memória de 8 GB é soldada; avalie se essa capacidade será suficiente no longo prazo.',
-    price: 'R$ 3.899,00',
-    sold: '10 mil vendidos',
-    link: 'https://meli.la/2oZsw7o',
-  },
-  {
-    brand: 'Samsung',
-    model: 'Galaxy Book4',
-    badge: 'Mais portátil',
-    tone: 'cyan',
-    summary: 'Construção leve e configuração equilibrada para levar na mochila.',
-    specs: ['Core i5-1335U', '8 GB de RAM', 'SSD de 512 GB', 'Tela 15,6″ Full HD'],
-    ideal: 'Faculdade, escritório, reuniões e deslocamentos frequentes.',
-    attention: 'Prioriza mobilidade e autonomia; não é uma opção para jogos pesados.',
-    price: 'R$ 4.334,15',
-    sold: '+10 mil vendidos',
-    link: 'https://meli.la/1E8Rucj',
-  },
-  {
-    brand: 'Acer',
-    model: 'Nitro V15',
-    badge: 'Para jogos e GPU',
-    tone: 'orange',
-    summary: 'A única escolha da lista com placa de vídeo dedicada para jogos e tarefas gráficas.',
-    specs: ['Core i5-13420H', '16 GB DDR5', 'GeForce RTX 4050', 'Tela 15,6″ 165 Hz'],
-    ideal: 'Jogos, edição de vídeo, 3D e aplicações aceleradas por GPU.',
-    attention: 'É mais pesado, consome mais energia e costuma fazer mais ruído que modelos de produtividade.',
-    price: 'R$ 7.114,50',
-    sold: '+1 mil vendidos',
-    link: 'https://meli.la/2AbWA7q',
-  },
-];
+import NotebookCard from '../components/NotebookCard.astro';
+import { recommendedProducts } from '../data/products';
 
 const criteria = [
   ['Trabalho e estudo', 'VAIO FE16', 'Mais RAM e tela espaçosa'],
@@ -65,6 +12,8 @@ const criteria = [
 
 const title = 'Vale o Notebook?';
 const description = 'Quatro notebooks escolhidos para trabalho, estudo, mobilidade e jogos — com vantagens e limites explicados sem enrolação.';
+const configuredSite = import.meta.env.PUBLIC_SITE_URL;
+const canonical = configuredSite ? new URL('/', configuredSite) : undefined;
 ---
 
 <!doctype html>
@@ -78,6 +27,7 @@ const description = 'Quatro notebooks escolhidos para trabalho, estudo, mobilida
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    {canonical && <link rel="canonical" href={canonical} />}
     <title>{title} — notebooks escolhidos sem enrolação</title>
   </head>
   <body>
@@ -87,9 +37,10 @@ const description = 'Quatro notebooks escolhidos para trabalho, estudo, mobilida
         <span>Vale o Notebook?</span>
       </a>
       <nav aria-label="Navegação principal">
-        <a href="#escolhas">Escolhas</a>
-        <a href="#comparativo">Comparativo</a>
-        <a href="#criterios">Como avaliamos</a>
+        <a href="/notebooks">Notebooks</a>
+        <a href="/notebook-para-faculdade">Faculdade</a>
+        <a href="/notebook-para-programacao">Programação</a>
+        <a href="/qual-notebook-comprar">Guia</a>
       </nav>
     </header>
 
@@ -129,43 +80,7 @@ const description = 'Quatro notebooks escolhidos para trabalho, estudo, mobilida
         </div>
 
         <div class="product-grid">
-          {products.map((product, index) => (
-            <article class="product-card" id={`${product.brand}-${product.model}`.toLowerCase().replaceAll(' ', '-').replaceAll('?', '')}>
-              <div class={`product-visual ${product.tone}`} aria-hidden="true">
-                <span class="product-number">0{index + 1}</span>
-                <div class="laptop">
-                  <div class="laptop-screen"><span>{product.brand}</span></div>
-                  <div class="laptop-base"></div>
-                </div>
-              </div>
-              <div class="product-content">
-                <div class="product-topline">
-                  <span class="badge">{product.badge}</span>
-                  <span class="verified">Seleção editorial</span>
-                </div>
-                <p class="product-brand">{product.brand}</p>
-                <h3>{product.model}</h3>
-                <p class="product-summary">{product.summary}</p>
-                <ul class="spec-list" aria-label="Informações comerciais consultadas">
-                  <li>{product.price}</li>
-                  <li>{product.sold}</li>
-                </ul>
-                <ul class="spec-list">
-                  {product.specs.map((spec) => <li>{spec}</li>)}
-                </ul>
-                <div class="fit-box">
-                  <strong>Vale para:</strong>
-                  <span>{product.ideal}</span>
-                </div>
-                <p class="attention"><strong>Atenção:</strong> {product.attention}</p>
-                <a class="button button-product" href={product.link} target="_blank" rel="sponsored noopener noreferrer">
-                  Ver oferta no Mercado Livre
-                  <span aria-hidden="true">↗</span>
-                </a>
-                <p class="price-note">Consulta em 16/08/2026. Preço, estoque e vendedor devem ser confirmados no anúncio.</p>
-              </div>
-            </article>
-          ))}
+          {recommendedProducts.map((product, index) => <NotebookCard product={product} index={index} />)}
         </div>
       </section>
 
@@ -247,5 +162,17 @@ const description = 'Quatro notebooks escolhidos para trabalho, estudo, mobilida
       <p>Conteúdo independente para ajudar você a comparar antes de comprar.</p>
       <p class="legal">Podemos receber comissão por compras feitas pelos links. Isso não aumenta o preço do produto. Última revisão: agosto de 2026.</p>
     </footer>
+    <script>
+      document.querySelectorAll('[data-affiliate-click]').forEach((link) => {
+        link.addEventListener('click', () => {
+          window.dispatchEvent(new CustomEvent('affiliate_click', {
+            detail: {
+              product: link.getAttribute('data-product'),
+              seller: link.getAttribute('data-seller'),
+            },
+          }));
+        });
+      });
+    </script>
   </body>
 </html>

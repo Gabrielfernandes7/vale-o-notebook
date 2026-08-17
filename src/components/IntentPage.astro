@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import NotebookCard from './NotebookCard.astro';
+import type { NotebookProduct } from '../data/products';
+
+interface Props {
+  title: string;
+  description: string;
+  eyebrow: string;
+  heading: string;
+  intro: string;
+  products: NotebookProduct[];
+  note?: string;
+}
+
+const { title, description, eyebrow, heading, intro, products, note } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="intent-hero">
+    <p class="eyebrow">{eyebrow}</p>
+    <h1>{heading}</h1>
+    <p>{intro}</p>
+    {note && <aside>{note}</aside>}
+  </section>
+  <section class="intent-results" aria-label="Notebooks selecionados">
+    <div class="product-grid">
+      {products.map((product, index) => <NotebookCard product={product} index={index} />)}
+    </div>
+  </section>
+  <section class="intent-guide">
+    <h2>Como decidir sem cair apenas no preço</h2>
+    <div>
+      <article><strong>Memória</strong><p>8 GB atendem ao uso comum; 12 GB ou 16 GB dão mais margem para multitarefa.</p></article>
+      <article><strong>Processador</strong><p>Série H prioriza desempenho. Série U costuma favorecer mobilidade e consumo.</p></article>
+      <article><strong>Placa de vídeo</strong><p>GPU dedicada só é necessária para jogos, 3D e determinadas cargas de edição.</p></article>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .intent-hero{padding:6rem 0 4rem;max-width:900px}.intent-hero h1{font-size:clamp(3rem,7vw,6rem)}.intent-hero>p:not(.eyebrow){max-width:760px;color:var(--muted);font-size:1.15rem;line-height:1.7}.intent-hero aside{margin-top:1.5rem;padding:1rem 1.2rem;border-left:4px solid var(--blue);border-radius:0 12px 12px 0;background:#eef3ff;color:#334155;line-height:1.6}.intent-results{padding:1rem 0 6rem}.intent-guide{margin:0 0 6rem;padding:clamp(1.5rem,5vw,3rem);border-radius:24px;background:var(--ink);color:white}.intent-guide h2{margin:0 0 2rem;font-size:clamp(1.8rem,4vw,3rem);letter-spacing:-.04em}.intent-guide>div{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}.intent-guide article{padding:1rem;border-top:1px solid #425069}.intent-guide p{color:#b3bdcb;line-height:1.6;font-size:.9rem}@media(max-width:720px){.intent-hero{padding-top:4rem}.intent-guide>div{grid-template-columns:1fr}}
+</style>
+

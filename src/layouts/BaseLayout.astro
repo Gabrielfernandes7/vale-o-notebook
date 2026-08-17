@@ -1,0 +1,60 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const configuredSite = import.meta.env.PUBLIC_SITE_URL;
+const canonical = configuredSite ? new URL(Astro.url.pathname, configuredSite) : undefined;
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#0b1220" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Vale o Notebook? — início">
+        <span class="brand-mark" aria-hidden="true">V?</span>
+        <span>Vale o Notebook?</span>
+      </a>
+      <nav aria-label="Navegação principal">
+        <a href="/notebooks">Notebooks</a>
+        <a href="/notebook-para-faculdade">Faculdade</a>
+        <a href="/notebook-para-programacao">Programação</a>
+        <a href="/qual-notebook-comprar">Guia</a>
+      </nav>
+    </header>
+    <main><slot /></main>
+    <footer>
+      <div class="brand footer-brand"><span class="brand-mark" aria-hidden="true">V?</span><span>Vale o Notebook?</span></div>
+      <p>Conteúdo independente para ajudar você a comparar antes de comprar.</p>
+      <p class="legal">Podemos receber comissão por compras feitas pelos links. Isso não aumenta o preço do produto. Última revisão: agosto de 2026.</p>
+    </footer>
+    <script>
+      document.querySelectorAll('[data-affiliate-click]').forEach((link) => {
+        link.addEventListener('click', () => {
+          window.dispatchEvent(new CustomEvent('affiliate_click', {
+            detail: {
+              product: link.getAttribute('data-product'),
+              seller: link.getAttribute('data-seller'),
+            },
+          }));
+        });
+      });
+    </script>
+  </body>
+</html>

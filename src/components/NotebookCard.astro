@@ -1,0 +1,54 @@
+---
+import type { NotebookProduct } from '../data/products';
+
+interface Props {
+  product: NotebookProduct;
+  index?: number;
+}
+
+const { product, index = 0 } = Astro.props;
+---
+
+<article class="product-card" id={product.slug}>
+  <div class={`product-visual ${product.tone}`} aria-hidden="true">
+    <span class="product-number">{String(index + 1).padStart(2, '0')}</span>
+    <div class="laptop">
+      <div class="laptop-screen"><span>{product.brand}</span></div>
+      <div class="laptop-base"></div>
+    </div>
+  </div>
+  <div class="product-content">
+    <div class="product-topline">
+      <span class="badge">{product.badge}</span>
+      <span class="verified">Seleção editorial</span>
+    </div>
+    <p class="product-brand">{product.brand}</p>
+    <h3>{product.model}</h3>
+    <p class="product-summary">{product.summary}</p>
+    <ul class="spec-list" aria-label="Informações comerciais consultadas">
+      <li>{product.priceDisplay}</li>
+      <li>{product.sold}</li>
+    </ul>
+    <ul class="spec-list" aria-label="Configuração principal">
+      {product.specs.map((spec) => <li>{spec}</li>)}
+    </ul>
+    <div class="fit-box">
+      <strong>Vale para:</strong>
+      <span>{product.ideal}</span>
+    </div>
+    <p class="attention"><strong>Atenção:</strong> {product.attention}</p>
+    <a
+      class="button button-product"
+      href={product.affiliateLink}
+      target="_blank"
+      rel="sponsored noopener noreferrer"
+      data-affiliate-click
+      data-product={product.slug}
+      data-seller={product.seller}
+    >
+      Ver oferta no Mercado Livre <span aria-hidden="true">↗</span>
+    </a>
+    <p class="price-note">Consulta em 16/08/2026. Preço, estoque e vendedor devem ser confirmados no anúncio.</p>
+  </div>
+</article>
+

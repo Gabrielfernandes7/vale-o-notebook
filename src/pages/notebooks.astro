@@ -1,0 +1,14 @@
+---
+import IntentPage from '../components/IntentPage.astro';
+import { recommendedProducts } from '../data/products';
+---
+
+<IntentPage
+  title="Notebooks recomendados em 2026 | Vale o Notebook?"
+  description="Compare notebooks selecionados para trabalho, faculdade, programação, mobilidade e jogos."
+  eyebrow="CATÁLOGO CURADO"
+  heading="Notebooks que valem a compra para cada tipo de uso."
+  intro="Esta lista não tenta ter todos os modelos. Ela reúne poucas opções com propósito claro, link de afiliado identificado e limitações explicadas."
+  products={recommendedProducts}
+/>
+

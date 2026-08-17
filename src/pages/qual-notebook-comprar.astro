@@ -1,0 +1,15 @@
+---
+import IntentPage from '../components/IntentPage.astro';
+import { recommendedProducts } from '../data/products';
+---
+
+<IntentPage
+  title="Qual notebook comprar em 2026? Guia direto | Vale o Notebook?"
+  description="Descubra qual notebook comprar de acordo com seu uso, orçamento e prioridade, sem depender apenas da marca."
+  eyebrow="GUIA DE DECISÃO"
+  heading="Escolha primeiro o seu uso. Depois, a configuração."
+  intro="Trabalho e estudo pedem equilíbrio. Mobilidade pede peso e autonomia. Jogos e edição exigem GPU dedicada. Comprar acima da necessidade desperdiça dinheiro; comprar abaixo cria frustração."
+  note="Nossa regra: defina o programa mais pesado que você usará, quantas tarefas manterá abertas e com que frequência levará o notebook na mochila."
+  products={recommendedProducts}
+/>
+

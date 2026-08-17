@@ -1,0 +1,16 @@
+---
+import IntentPage from '../components/IntentPage.astro';
+import { productsByCategory } from '../data/products';
+
+const choices = productsByCategory('programacao');
+---
+
+<IntentPage
+  title="Melhor notebook para programação em 2026 | Vale o Notebook?"
+  description="Notebooks para programação comparados por processador, RAM, SSD, tela e possibilidade de multitarefa."
+  eyebrow="NOTEBOOK PARA PROGRAMAÇÃO"
+  heading="CPU ajuda, mas memória limitada cobra a conta depois."
+  intro="Para IDE, navegador, banco local, Docker e chamadas de vídeo ao mesmo tempo, o conjunto importa mais que o selo Core i5 ou Ryzen 5. Veja as opções aprovadas e o limite de cada uma."
+  products={choices}
+/>
+

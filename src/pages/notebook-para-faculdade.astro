@@ -1,0 +1,16 @@
+---
+import IntentPage from '../components/IntentPage.astro';
+import { productsByCategory } from '../data/products';
+
+const choices = productsByCategory('faculdade');
+---
+
+<IntentPage
+  title="Melhor notebook para faculdade em 2026 | Vale o Notebook?"
+  description="Compare notebooks para faculdade considerando mobilidade, tela, memória, bateria e desempenho real."
+  eyebrow="NOTEBOOK PARA FACULDADE"
+  heading="Para estudar, o melhor notebook é o que acompanha sua rotina."
+  intro="Quem transporta o aparelho todos os dias deve priorizar mobilidade. Quem abre muitas abas, planilhas ou ferramentas mais pesadas precisa olhar memória e processador antes da marca."
+  products={choices}
+/>
+
