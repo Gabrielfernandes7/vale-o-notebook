@@ -1,8 +1,62 @@
 ---
 import '../styles/global.css';
 
+const products = [
+  {
+    brand: 'VAIO',
+    model: 'FE16',
+    badge: 'Melhor equilíbrio',
+    tone: 'blue',
+    summary: 'Tela grande, memória confortável e Windows pronto para trabalho e estudo.',
+    specs: ['Ryzen 5 5625U', '12 GB de RAM', 'SSD de 512 GB', 'Tela 16″ IPS WUXGA'],
+    ideal: 'Trabalho, faculdade, muitas abas e uso diário.',
+    attention: 'É maior que um notebook de 15,6″; considere isso se você transporta todo dia.',
+    link: 'https://www.mercadolivre.com.br/notebook-vaio-fe16-amd-ryzen-5-5625u-windows-11-home-12gb-ram-512gb-ssd-tela-16-ips-wuxga-antirreflexo-vjfe69f11x-b1221h-cinza-grafite/p/MLB48919057?pdp_filters=item_id%3AMLB5361315142&matt_tool=38524122&ua=pqEIGA_OGp2j5RHtmbWz4XyzeVpGGAOP2avCm0tBIeWzr5oi#origin=share&sid=share&wid=MLB5361315142&action=copy',
+  },
+  {
+    brand: 'Lenovo',
+    model: 'IdeaPad Slim 3i',
+    badge: 'Mais desempenho',
+    tone: 'violet',
+    summary: 'Processador forte para quem quer agilidade e não precisa de placa de vídeo dedicada.',
+    specs: ['Core i5-13420H', '8 GB de RAM', 'SSD de 512 GB', 'Windows 11'],
+    ideal: 'Planilhas, programação, estudo e produtividade intensa.',
+    attention: 'Os 8 GB atendem ao uso comum, mas confirme a possibilidade de expansão antes da compra.',
+    link: 'https://www.mercadolivre.com.br/notebook-lenovo-ideapad-slim-3-15irh10-intel-core-i5-13420h-8gb-512gb-ssd-windows-11-153-83ns0002br-luna-grey/p/MLB51233304?pdp_filters=item_id%3AMLB5758565582&matt_tool=38524122&ua=Gjr5HvZaZALoUCcqaKflbUD-1RsJsUW9STzhE6PLRzIeSx6N#origin=share&sid=share&wid=MLB5758565582&action=copy',
+  },
+  {
+    brand: 'Samsung',
+    model: 'Galaxy Book4',
+    badge: 'Mais portátil',
+    tone: 'cyan',
+    summary: 'Construção leve e configuração equilibrada para levar na mochila.',
+    specs: ['Core i5-1335U', '8 GB de RAM', 'SSD de 512 GB', 'Tela 15,6″ Full HD'],
+    ideal: 'Faculdade, escritório, reuniões e deslocamentos frequentes.',
+    attention: 'Prioriza mobilidade e autonomia; não é uma opção para jogos pesados.',
+    link: 'https://www.mercadolivre.com.br/notebook-samsung-galaxy-book4-intel-core-i5-1335u-13-ghz-ate-46ghz-12-mb-l3-cache-windows-11-home-8gb-512gb-ssd-iris-xe-156-full-hd-led-155kg/p/MLB37044038?offer_type=OFFICIAL_STORE',
+  },
+  {
+    brand: 'Acer',
+    model: 'Nitro V15',
+    badge: 'Para jogos e GPU',
+    tone: 'orange',
+    summary: 'A única escolha da lista com placa de vídeo dedicada para jogos e tarefas gráficas.',
+    specs: ['Core i5-13420H', '16 GB DDR5', 'GeForce RTX 4050', 'Tela 15,6″ 165 Hz'],
+    ideal: 'Jogos, edição de vídeo, 3D e aplicações aceleradas por GPU.',
+    attention: 'É mais pesado, consome mais energia e costuma fazer mais ruído que modelos de produtividade.',
+    link: 'https://www.mercadolivre.com.br/notebook-acer-nitro-v15-anv155251e4-intel-core-i5-13420h-13-geracao-16gb-ddr5-nvidia-geforce-rtx-4050-512ssd-tela-156-165-hz-windows-11-home-teclado-retroiluminado-wi-fi-6/p/MLB60407347?pdp_filters=item_id%3AMLB5840007964&matt_tool=38524122&ua=qNL977J2pTn9ah1FLHfWK5T2P4YXJfJjn-iOwwRWWVEM0PVk#origin=share&sid=share&wid=MLB5840007964&action=copy',
+  },
+];
+
+const criteria = [
+  ['Trabalho e estudo', 'VAIO FE16', 'Mais RAM e tela espaçosa'],
+  ['Desempenho de CPU', 'Lenovo Slim 3i', 'Processador série H'],
+  ['Mobilidade', 'Galaxy Book4', 'Perfil mais leve e discreto'],
+  ['Jogos e edição', 'Acer Nitro V15', 'RTX 4050 e 16 GB DDR5'],
+];
+
 const title = 'Vale o Notebook?';
-const description = 'Curadoria direta para encontrar notebooks que realmente valem o seu dinheiro.';
+const description = 'Quatro notebooks escolhidos para trabalho, estudo, mobilidade e jogos — com vantagens e limites explicados sem enrolação.';
 ---
 
 <!doctype html>
@@ -12,14 +66,174 @@ const description = 'Curadoria direta para encontrar notebooks que realmente val
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <meta name="theme-color" content="#0b1220" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <title>{title} — notebooks escolhidos sem enrolação</title>
   </head>
   <body>
-    <main>
-      <p class="eyebrow">CURADORIA INDEPENDENTE</p>
-      <h1>{title}</h1>
-      <p class="lead">{description}</p>
-      <p class="status">Projeto Astro inicializado. A landing page será construída na próxima etapa.</p>
+    <header class="site-header">
+      <a class="brand" href="#inicio" aria-label="Vale o Notebook? — início">
+        <span class="brand-mark" aria-hidden="true">V?</span>
+        <span>Vale o Notebook?</span>
+      </a>
+      <nav aria-label="Navegação principal">
+        <a href="#escolhas">Escolhas</a>
+        <a href="#comparativo">Comparativo</a>
+        <a href="#criterios">Como avaliamos</a>
+      </nav>
+    </header>
+
+    <main id="inicio">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">CURADORIA DIRETA, SEM FICHA TÉCNICA CONFUSA</p>
+          <h1>Encontre o notebook certo sem comprar problema.</h1>
+          <p class="hero-lead">{description}</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#escolhas">Ver as 4 escolhas</a>
+            <a class="text-link" href="#comparativo">Comparar rapidamente <span aria-hidden="true">↓</span></a>
+          </div>
+          <ul class="trust-list" aria-label="Compromissos da curadoria">
+            <li>Sem cadastro</li>
+            <li>Sem ranking pago</li>
+            <li>Limites explicados</li>
+          </ul>
+        </div>
+        <aside class="decision-card" aria-label="Resumo das recomendações">
+          <p class="decision-label">RESPOSTA RÁPIDA</p>
+          <h2>Qual é o seu uso?</h2>
+          <a href="#vaio-fe16"><span>Trabalho e estudo</span><strong>VAIO FE16</strong></a>
+          <a href="#lenovo-ideapad-slim-3i"><span>CPU mais forte</span><strong>Lenovo Slim 3i</strong></a>
+          <a href="#samsung-galaxy-book4"><span>Levar todo dia</span><strong>Galaxy Book4</strong></a>
+          <a href="#acer-nitro-v15"><span>Jogos e edição</span><strong>Acer Nitro V15</strong></a>
+        </aside>
+      </section>
+
+      <section class="section" id="escolhas">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">AS ESCOLHAS</p>
+            <h2>Quatro opções, cada uma com um propósito.</h2>
+          </div>
+          <p>Não existe notebook perfeito. Existe o modelo que entrega o que você precisa sem cobrar por aquilo que não vai usar.</p>
+        </div>
+
+        <div class="product-grid">
+          {products.map((product, index) => (
+            <article class="product-card" id={`${product.brand}-${product.model}`.toLowerCase().replaceAll(' ', '-').replaceAll('?', '')}>
+              <div class={`product-visual ${product.tone}`} aria-hidden="true">
+                <span class="product-number">0{index + 1}</span>
+                <div class="laptop">
+                  <div class="laptop-screen"><span>{product.brand}</span></div>
+                  <div class="laptop-base"></div>
+                </div>
+              </div>
+              <div class="product-content">
+                <div class="product-topline">
+                  <span class="badge">{product.badge}</span>
+                  <span class="verified">Seleção editorial</span>
+                </div>
+                <p class="product-brand">{product.brand}</p>
+                <h3>{product.model}</h3>
+                <p class="product-summary">{product.summary}</p>
+                <ul class="spec-list">
+                  {product.specs.map((spec) => <li>{spec}</li>)}
+                </ul>
+                <div class="fit-box">
+                  <strong>Vale para:</strong>
+                  <span>{product.ideal}</span>
+                </div>
+                <p class="attention"><strong>Atenção:</strong> {product.attention}</p>
+                <a class="button button-product" href={product.link} target="_blank" rel="sponsored noopener noreferrer">
+                  Ver oferta no Mercado Livre
+                  <span aria-hidden="true">↗</span>
+                </a>
+                <p class="price-note">Preço, estoque e vendedor devem ser confirmados no anúncio.</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="section comparison-section" id="comparativo">
+        <div class="section-heading compact">
+          <div>
+            <p class="eyebrow">DECISÃO EM 30 SEGUNDOS</p>
+            <h2>Compare pelo que realmente muda a compra.</h2>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Seu principal uso</th>
+                <th>Nossa escolha</th>
+                <th>Por quê</th>
+              </tr>
+            </thead>
+            <tbody>
+              {criteria.map((row) => (
+                <tr>
+                  <td>{row[0]}</td>
+                  <td><strong>{row[1]}</strong></td>
+                  <td>{row[2]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="method-section" id="criterios">
+        <div>
+          <p class="eyebrow">COMO AVALIAMOS</p>
+          <h2>Menos promessa. Mais critério.</h2>
+          <p>Selecionamos configurações coerentes para usos reais e mostramos também o ponto fraco de cada opção. A decisão considera processador, memória, armazenamento, tela, mobilidade e o tipo de tarefa.</p>
+        </div>
+        <ol class="method-list">
+          <li><span>01</span><div><strong>Uso antes da marca</strong><p>O notebook começa pelo que você precisa fazer.</p></div></li>
+          <li><span>02</span><div><strong>Configuração sem gargalo óbvio</strong><p>Priorizamos equilíbrio entre processador, RAM e SSD.</p></div></li>
+          <li><span>03</span><div><strong>Limites visíveis</strong><p>Peso, expansão e desempenho gráfico entram na conta.</p></div></li>
+        </ol>
+      </section>
+
+      <section class="faq section" aria-labelledby="faq-title">
+        <div class="section-heading compact">
+          <div>
+            <p class="eyebrow">DÚVIDAS IMPORTANTES</p>
+            <h2 id="faq-title">Antes de clicar em comprar.</h2>
+          </div>
+        </div>
+        <div class="faq-grid">
+          <details>
+            <summary>O preço mostrado no Mercado Livre pode mudar?</summary>
+            <p>Sim. Preços, cupons, frete, estoque e condições de parcelamento são definidos pelo anúncio e podem mudar a qualquer momento.</p>
+          </details>
+          <details>
+            <summary>Vocês vendem ou entregam os notebooks?</summary>
+            <p>Não. Fazemos a curadoria e direcionamos você ao anúncio. Venda, pagamento, entrega, garantia e devolução são tratados pelo Mercado Livre e pelo vendedor.</p>
+          </details>
+          <details>
+            <summary>Os links geram comissão?</summary>
+            <p>Alguns links podem gerar comissão de afiliado sem aumentar o preço para você. Isso não altera nossos critérios de escolha.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="final-cta">
+        <p class="eyebrow">AINDA EM DÚVIDA?</p>
+        <h2>Comece pelo seu uso, não pela promoção.</h2>
+        <p>Trabalho e estudo: VAIO. CPU forte: Lenovo. Mobilidade: Samsung. Jogos e edição: Acer.</p>
+        <a class="button button-light" href="#escolhas">Rever as escolhas</a>
+      </section>
     </main>
+
+    <footer>
+      <div class="brand footer-brand"><span class="brand-mark" aria-hidden="true">V?</span><span>Vale o Notebook?</span></div>
+      <p>Conteúdo independente para ajudar você a comparar antes de comprar.</p>
+      <p class="legal">Podemos receber comissão por compras feitas pelos links. Isso não aumenta o preço do produto. Última revisão: agosto de 2026.</p>
+    </footer>
   </body>
 </html>
